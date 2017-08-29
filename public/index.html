@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>MrYanG</title>
+</head>
+<body>
+<h1>Hello Ajax</h1>
+<button id="btn01">发送get请求</button>
+
+<button id="btn02">发送post请求</button>
+
+
+
+
+<div class="box" style="background-color: #bbffaa">
+
+</div>
+
+<script type="text/javascript">
+    let btn01 = document.getElementById("btn01");
+    let btn02 = document.getElementById("btn02");
+    let box = document.querySelector(".box");
+
+    btn01.onclick = function () {
+
+        //创建XMLHttpRequest
+        let xhr = new XMLHttpRequest();
+        /*
+            open方法设置请求信息，参数
+                Method 请求的方法 get或post
+                url 请求的地址，get请求可以通过地址发送请求参数
+                async 是一个布尔值，是否以异步的形式发送请求 默认值是true 一般都使用默认值
+         */
+        xhr.open("get", "/testAjax?name=yang&password=321321");
+        xhr.send();
+
+        //onreadystatechange 这里可以替换称 onload
+        xhr.onreadystatechange = function () {
+            //alert(xhr.readyState);
+            if (xhr.readyState == 4){
+                let data = xhr.responseText;
+                box.innerHTML += data +"<br>";
+            }
+        };
+    };
+
+    btn02.onclick = function () {
+        //console.log("post请求已经发送");
+        let xhr = new XMLHttpRequest();
+        xhr.open("post", "/testAjax");
+
+        //post设置请求头供服务器解析 "Content-Type","application/x-www-form-urlencoded"
+        //xhr.setRequestHeader();
+        xhr.setRequestHeader("Content-Type","application/x-www-form-urlencoded");
+
+        xhr.send("name=YanG&password=23433");
+
+        xhr.onload = function () {
+            if (xhr.readyState == 4 && xhr.status ==200){
+                let data = xhr.responseText;
+                box.innerHTML += data + "<br>";
+            }
+        }
+
+    };
+</script>
+</body>
+</html>

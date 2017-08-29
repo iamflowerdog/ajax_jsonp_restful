@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>MrYanG</title>
+</head>
+<body>
+<button id="btn01">jQuery发送Ajax请求</button>
+<button id="btn02">JsonP</button>
+<button id="btn03">GetJson</button>
+<div class="box"></div>
+
+<script type="text/javascript" src="/script/jquery-1.12.4.js"></script>
+<script>
+    $("#btn01").click(function () {
+        //发送Ajax请求  /testAjax
+        $.ajax({
+            type: "get",
+            url: "/testJQuery",
+            dataType: "text",
+            data: "username=John&password=Boston",
+            success: function (data) {
+                alert(data);
+            }
+
+        });
+    });
+
+    $("#btn02").click(() => {
+       /*$.get(
+           "https://api.douban.com/v2/movie/in_theaters",
+           {username:"$.get方法", password:"456789"},
+           (data) => {
+               alert(data.name);
+           }
+        )*/
+        let script = document.createElement("script");
+
+        //设置src属性为当前页面的请求
+        //script.src = "http://localhost:3000/JsonP?username=JsonPaa";
+        script.src = "http://localhost:3000/JsonP?username=JsonPaa";
+
+        //设置为豆瓣的请求
+        //script.src = "https://api.douban.com/v2/movie/in_theaters?callback=testJsonP";
+        document.body.appendChild(script);
+    });
+
+    $("#btn03").click(function () {
+        $.getJSON(
+            "https://api.douban.com/v2/movie/in_theaters?callback=?",
+            function (data) {
+                $(".box").html(JSON.stringify(data));
+            }
+        )
+    });
+
+
+
+
+
+    function testJsonP(data) {
+       // $(".box").html(data);
+
+        //data = JSON.stringify(data);
+
+        $(".box").html(data);
+
+        //console.log(data);
+    }
+
+
+
+</script>
+<!--<script type="text/javascript" src="https://api.douban.com/v2/book/1220562"></script>-->
+<script src="http://localhost:3000/"></script>
+
+<script  type="text/javascript" src="http://localhost:3000/JsonP"></script>
+
+
+</body>
+</html>
