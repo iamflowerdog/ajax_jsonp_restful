@@ -48,12 +48,11 @@
 
         // post
         $('#btn1').click(function () {
-            $.post(
-                'https://api.douban.com/v2/movie/in_theaters',
+            $.getJSON(
+                'http://higo.utday.com/dev~Huoying/higo-view/App.News.items',
                 function (data) {
                     console.log(data);
-                },
-                'jsonp'
+                }
             )
         })
     });

@@ -83,6 +83,7 @@
    * 学习链接 http://www.runoob.com/jquery/ajax-post.html
    * 语法： `$(selector).post(URL,data,function(data,status,xhr),dataType)`
    * dataType 可以传 jsonp 用来解决跨域资源加载
+   * `$.getJSON()` 方法可以直接请求到JSON资源格式
   
    
    
