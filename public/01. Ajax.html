@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>MrYanG</title>
+    <style>
+        *{
+            text-align: center;
+            color: orange;
+            font-size: 24px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="box">
+
+    </div>
+
+    <button id="btn">$.get获取数据</button>
+    <br>
+
+    <button id="btn1">$.post</button>
+
+
+<script  type="text/javascript" src="./script/jquery-1.12.4.js"></script>
+
+<script type="text/javascript">
+
+    /**
+     * 1. 请求接口：http://higo.utday.com/dev~Huoying/higo-view/App.News.items
+     *            https://api.douban.com/v2/movie/in_theaters
+     * 2. post
+     * 3. 参考资料 `http://www.runoob.com/jquery/ajax-post.html`
+     */
+
+    $(document).ready(function () {
+        // get
+        $('#btn').click(function () {
+            $.get(
+                'http://higo.utday.com/dev~Huoying/higo-view/App.News.items',
+                function (data) {
+                    // $('.box').html(data);
+                    console.log(data);
+                }
+            )
+        });
+
+        // post
+        $('#btn1').click(function () {
+            $.post(
+                'https://api.douban.com/v2/movie/in_theaters',
+                function (data) {
+                    console.log(data);
+                },
+                'jsonp'
+            )
+        })
+    });
+
+
+
+
+
+
+
+
+</script>
+</body>
+</html>

@@ -75,3 +75,24 @@
             */
           
           ```
+
+          
+          
+#### jQuery 发送 Ajax请求
+     
+   * 学习链接 http://www.runoob.com/jquery/ajax-post.html
+   * 语法： `$(selector).post(URL,data,function(data,status,xhr),dataType)`
+   * dataType 可以传 jsonp 用来解决跨域资源加载
+  
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
